@@ -1,8 +1,9 @@
 import java.math.BigInteger;
 
 class Solution {
+    /* Given an array of integers nums, write a method that returns the "pivot" index of this array.
+    If no such index exists, we should return -1. If there are multiple pivot indexes, you should return the left-most pivot index.*/
     public int pivotIndex(int[] nums) {
-        //If pivot not found must return its index as -1
         int pivotIndex = -1;
         int leftSum = 0;
         int rightSum;
@@ -28,8 +29,9 @@ class Solution {
         return pivotIndex;
     }
 
+    /* Find whether the largest element in the array is at least twice as much as every other number in the array.
+    If it is, return the index of the largest element, otherwise return -1.*/
     public int dominantIndex(int[] nums) {
-        //If dominant not found must return its index as -1
         int dominantIndex = -1;
         int max = -1;
 
@@ -53,14 +55,16 @@ class Solution {
         return dominantIndex;
     }
 
-    //Given a non-empty array of digits representing a non-negative integer. Add plus one.
+    /* Given a non-empty array of digits representing a non-negative integer, plus one to the integer.
+    The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit.
+    You may assume the integer does not contain any leading zero, except the number 0 itself.*/
     public int[] plusOne(int[] digits) {
         //Create a string from int array
         StringBuilder s = new StringBuilder();
         for (int i : digits) {
             s.append(i);
         }
-        //Convert String to BigInteger and add one, because Leetcode tests use huge arrays
+        //Convert String to BigInteger and add one, because LeetCode tests use huge arrays
         BigInteger number = new BigInteger(s.toString());
         BigInteger one = new BigInteger("1");
         number = number.add(one);
@@ -73,5 +77,106 @@ class Solution {
         }
 
         return plusOne;
+    }
+
+    //Given a matrix of M x N elements (M rows, N columns), return all elements of the matrix in diagonal order as shown in the below image.
+    public int[] findDiagonalOrder(int[][] matrix) {
+        int elementCount = matrix.length * matrix[0].length;
+        int[] order = new int[elementCount];
+        int k = 0;
+        int i = 0, j = 0;
+        String move = "first";
+
+        while (k < order.length) {
+            switch (move){
+                //first element is always [0][0]
+                case "first":
+                    order[k] = matrix[i][j];
+                    //if there are columns on the right, shift one column right
+                    if (j < matrix[i].length - 1) {
+                        move = "oneColumnRight";
+                    }
+                    //if there are rows beneath, shift one row down
+                    else if (i < matrix.length - 1) {
+                        move = "oneRowDown";
+                    }
+                    break;
+
+                case "oneColumnRight":
+                    j++;
+                    order[k] = matrix[i][j];
+                    //if we're at the top and there are rows below, go diagonally down
+                    if (i == 0 && i < matrix.length - 1) {
+                        move = "diagonalDown";
+                    }
+                    //if this is a single row matrix
+                    else if (i == 0 && i == matrix.length - 1) {
+                        move = "oneColumnRight";
+                    }
+                    //if we're at the bottom, go diagonally up
+                    else if (i == matrix.length - 1) {
+                        move = "diagonalUp";
+                    }
+                    break;
+
+                case "oneRowDown":
+                    i++;
+                    order[k] = matrix[i][j];
+                    //if we're at the most left column and there are columns on the right, go diagonally up
+                    if (j == 0 && j < matrix[i].length - 1) {
+                        move = "diagonalUp";
+                    }
+                    //if this is a single column matrix
+                    else if (j == 0 && j == matrix[i].length - 1) {
+                        move = "oneRowDown";
+                    }
+                    //if we're at the most right column, go diagonally down
+                    else if (j == matrix[i].length - 1){
+                        move = "diagonalDown";
+                    }
+                    break;
+
+                case "diagonalDown":
+                    i++;
+                    j--;
+                    order[k] = matrix[i][j];
+                    //if we're at the most left column but there are still rows beneath, shift one row down
+                    if (j == 0 && i < matrix.length - 1) {
+                        move = "oneRowDown";
+                    }
+                    //if we're at the bottom row but there are still columns on the right, shift one column right
+                    else if (i == matrix.length - 1 && j < matrix[i].length - 1) {
+                        move = "oneColumnRight";
+                    }
+                    break;
+
+                case "diagonalUp":
+                    i--;
+                    j++;
+                    order[k] = matrix[i][j];
+                    //if we're at the top row but there are still columns on the right, shift one column right
+                    if (i == 0 && j < matrix[i].length - 1) {
+                        move = "oneColumnRight";
+                    }
+                    //if we're at the most right column but there are still rows beneath, shift one row down
+                    else if (j == matrix[i].length - 1 && i < matrix.length - 1) {
+                        move = "oneRowDown";
+                    }
+                    break;
+            }
+
+            k++;
+
+        }
+        return order;
+    }
+
+    public static void printArray(int[][] matrix) {
+        for (int[] i : matrix) {
+            for (int j = 0; i != null && j < i.length; ++j) {
+                System.out.print(i[j] + " ");
+            }
+            System.out.println();
+        }
     }
 }
