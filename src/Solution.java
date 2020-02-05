@@ -81,7 +81,10 @@ class Solution {
 
     //Given a matrix of M x N elements (M rows, N columns), return all elements of the matrix in diagonal order as shown in the below image.
     public int[] findDiagonalOrder(int[][] matrix) {
-        int elementCount = matrix.length * matrix[0].length;
+        int elementCount = 0;
+        for (int[] i : matrix) {
+            elementCount = elementCount + i.length;
+        }
         int[] order = new int[elementCount];
         int k = 0;
         int i = 0, j = 0;
