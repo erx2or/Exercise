@@ -1,4 +1,6 @@
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 
 class Solution {
     /* Given an array of integers nums, write a method that returns the "pivot" index of this array.
@@ -174,12 +176,73 @@ class Solution {
         return order;
     }
 
+    //Print two-dimensional array as matrix
     public static void printArray(int[][] matrix) {
         for (int[] i : matrix) {
             for (int j = 0; i != null && j < i.length; ++j) {
-                System.out.print(i[j] + " ");
+                if (i[j] < 10)
+                    System.out.print(i[j] + "  ");
+                else
+                    System.out.print(i[j] + " ");
             }
             System.out.println();
         }
+    }
+
+    //Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order.
+    public List<Integer> spiralOrder(int[][] matrix) {
+        int elementCount = 0;
+        for (int[] i : matrix) {
+            elementCount = elementCount + i.length;
+        }
+
+        List<Integer> spiralOrder = new ArrayList<>(elementCount);
+        int spiral = 0;
+        int i, j;
+        String move = "right";
+
+        while (elementCount > 0) {
+            switch (move){
+
+                case "right":
+                    //Go one row from left to right adding all elements that haven't been added yet
+                    for (j = spiral; j < matrix[0].length - spiral; j++) {
+                        spiralOrder.add(matrix[spiral][j]);
+                        elementCount--;
+                    }
+                    move = "down";
+                    break;
+
+                case "down":
+                    //Go one column from top to bottom adding all elements that haven't been added yet
+                    for (i = 1 + spiral; i < matrix.length - spiral; i++) {
+                        spiralOrder.add(matrix[i][matrix[0].length - 1 - spiral]);
+                        elementCount--;
+                    }
+                    move = "left";
+                    break;
+
+                case "left":
+                    //Go one row from right to left adding all elements that haven't been added yet
+                    for (j = spiral; j < matrix[0].length - 1- spiral; j++) {
+                        spiralOrder.add(matrix[matrix.length - 1 - spiral][matrix[0].length - 2 - j]);
+                        elementCount--;
+                    }
+                    move = "up";
+                    break;
+
+                case "up":
+                    //Go one column from bottom to top adding all elements that haven't been added yet
+                    for (i = matrix.length - 2 - spiral; i > spiral; i--) {
+                        spiralOrder.add(matrix[i][spiral]);
+                        elementCount--;
+                    }
+                    move = "right";
+                    spiral++;
+                    break;
+            }
+         }
+
+        return spiralOrder;
     }
 }
