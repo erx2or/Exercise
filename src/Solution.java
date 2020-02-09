@@ -245,4 +245,33 @@ class Solution {
 
         return spiralOrder;
     }
+
+    //Given a non-negative integer numRows, generate the first numRows of Pascal's triangle.
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> pascalTriangle = new ArrayList<>(numRows);
+        /* Every element of Pascal's Triangle can be calculated with binomial coefficient C(n,k),
+            where n is the row number and k is row's element number and counting starts from 0.
+        */
+        int elementValue;
+        for (int row = 0; row < numRows; row++) {
+            List<Integer> newRow = new ArrayList<>();
+            for (int rowElement = 0; rowElement <= row; rowElement++) {
+                elementValue = binomialCoeff(row, rowElement);
+                newRow.add(elementValue);
+            }
+            pascalTriangle.add(newRow);
+        }
+
+        return pascalTriangle;
+    }
+
+    //Thanks google
+    public int binomialCoeff(int n, int k) {
+        // Base Cases
+        if (k == 0 || k == n)
+            return 1;
+
+        // Recur
+        return binomialCoeff(n - 1, k - 1) + binomialCoeff(n - 1, k);
+    }
 }
