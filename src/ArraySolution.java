@@ -2,7 +2,7 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
-class Solution {
+class ArraySolution {
     /* Given an array of integers nums, write a method that returns the "pivot" index of this array.
     If no such index exists, we should return -1. If there are multiple pivot indexes, you should return the left-most pivot index.*/
     public int pivotIndex(int[] nums) {
