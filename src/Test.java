@@ -11,8 +11,11 @@ public class Test {
         int pascalTriangleRows = 10;
 
         //Input for String solutions
-        String firstBinaryNumber = "10100000100100110110010000010101111011011001101110111111111101000000101111001110001111100001101";
-        String secondBinaryNumber = "110101001011101110001111100110001010100001101011101010000011011011001011101111001100000011011110011";
+        String firstBinaryNumber = "101000001001001101100100000101011110110110";
+        String secondBinaryNumber = "1101010010111011100011111001100010101000";
+        String haystack = "hello";
+        String needle = "lo";
+        String[] words = {"passed","passengerlalalala","pass314"};
 
         int pivot = new ArraySolution().pivotIndex(nums);
         System.out.println("The pivot index for " + Arrays.toString(nums) + " is " + pivot);
@@ -42,5 +45,12 @@ public class Test {
         System.out.println();
         String binarySum = new StringSolution().addBinary(firstBinaryNumber, secondBinaryNumber);
         System.out.println("Sum of binary numbers: " + firstBinaryNumber + " + " + secondBinaryNumber + " = " + binarySum);
+
+        int subStringIndex = new StringSolution().strStr(haystack, needle);
+        System.out.println("In string \"" + haystack + "\" the substring's \"" + needle + "\" index is: " + subStringIndex);
+
+        String longestPrefix = new StringSolution().longestCommonPrefix(words);
+        System.out.println(Arrays.toString(words) + " longest common prefix is: " + longestPrefix);
+        System.out.println();
     }
 }
