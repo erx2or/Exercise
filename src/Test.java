@@ -16,6 +16,7 @@ public class Test {
         String haystack = "hello";
         String needle = "lo";
         String[] words = {"passed","passengerlalalala","pass314"};
+        char[] reverseMe = {'g', 'a', 'r', 'd', 'e', 'n', 'i', 'a'};
 
         int pivot = new ArraySolution().pivotIndex(nums);
         System.out.println("The pivot index for " + Arrays.toString(nums) + " is " + pivot);
@@ -51,6 +52,9 @@ public class Test {
 
         String longestPrefix = new StringSolution().longestCommonPrefix(words);
         System.out.println(Arrays.toString(words) + " longest common prefix is: " + longestPrefix);
-        System.out.println();
+        System.out.println("Before reverse: " + Arrays.toString(reverseMe));
+        TwoPointer test = new TwoPointer();
+        test.reverseString(reverseMe);
+        System.out.println("After reverse: " + Arrays.toString(reverseMe));
     }
 }
