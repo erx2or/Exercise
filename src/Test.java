@@ -54,12 +54,12 @@ public class Test {
         String longestPrefix = new StringSolution().longestCommonPrefix(words);
         System.out.println(Arrays.toString(words) + " longest common prefix is: " + longestPrefix);
         System.out.println("Before reverse: " + Arrays.toString(reverseMe));
-        TwoPointer test = new TwoPointer();
+        TwoPointerSolution test = new TwoPointerSolution();
         test.reverseString(reverseMe);
         System.out.println("After reverse: " + Arrays.toString(reverseMe));
 
         System.out.println("\nFor array " + Arrays.toString(moreNums));
-        int maxSumOfMinPairs = new TwoPointer().arrayPairSum(moreNums);
+        int maxSumOfMinPairs = new TwoPointerSolution().arrayPairSum(moreNums);
         System.out.println("The largest sum of min pairs is " + maxSumOfMinPairs);
     }
 }
