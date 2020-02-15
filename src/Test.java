@@ -18,6 +18,8 @@ public class Test {
         String[] words = {"passed","passengerlalalala","pass314"};
         char[] reverseMe = {'g', 'a', 'r', 'd', 'e', 'n', 'i', 'a'};
         int[] moreNums = {7, 3, 1, 0, 0, -6};
+        int[] ascArray = {2, 7, 11, 15};
+        int target = 13;
 
         int pivot = new ArraySolution().pivotIndex(nums);
         System.out.println("The pivot index for " + Arrays.toString(nums) + " is " + pivot);
@@ -61,5 +63,8 @@ public class Test {
         System.out.println("\nFor array " + Arrays.toString(moreNums));
         int maxSumOfMinPairs = new TwoPointerSolution().arrayPairSum(moreNums);
         System.out.println("The largest sum of min pairs is " + maxSumOfMinPairs);
+
+        int[] positions = new TwoPointerSolution().twoSum(ascArray, target);
+        System.out.println("\nFor array " + Arrays.toString(ascArray) + "\nValues at positions: " + Arrays.toString(positions) + " sum up to " + target);
     }
 }

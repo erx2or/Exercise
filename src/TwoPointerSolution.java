@@ -46,4 +46,26 @@ public class TwoPointerSolution {
 
         return sum;
     }
+
+    /* Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number.
+    The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2.
+    Your returned answers (both index1 and index2) are not zero-based.
+    You may assume that each input would have exactly one solution and you may not use the same element twice. */
+    public int[] twoSum(int[] numbers, int target) {
+        int i = 0;
+
+        while (i < numbers.length - 1) {
+            if (numbers[i] <= target) {
+                int j = numbers.length - 1;
+                while (i < j) {
+                    if (numbers[i] + numbers[j] == target)
+                        return new int[] {i + 1, j + 1};
+                    j--;
+                }
+            }
+            i++;
+        }
+
+        return new int[] {};
+    }
 }
