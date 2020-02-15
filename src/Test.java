@@ -17,6 +17,7 @@ public class Test {
         String needle = "lo";
         String[] words = {"passed","passengerlalalala","pass314"};
         char[] reverseMe = {'g', 'a', 'r', 'd', 'e', 'n', 'i', 'a'};
+        int[] moreNums = {7, 3, 1, 0, 0, -6};
 
         int pivot = new ArraySolution().pivotIndex(nums);
         System.out.println("The pivot index for " + Arrays.toString(nums) + " is " + pivot);
@@ -56,5 +57,9 @@ public class Test {
         TwoPointer test = new TwoPointer();
         test.reverseString(reverseMe);
         System.out.println("After reverse: " + Arrays.toString(reverseMe));
+
+        System.out.println("\nFor array " + Arrays.toString(moreNums));
+        int maxSumOfMinPairs = new TwoPointer().arrayPairSum(moreNums);
+        System.out.println("The largest sum of min pairs is " + maxSumOfMinPairs);
     }
 }
