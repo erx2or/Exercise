@@ -1,5 +1,6 @@
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 class ArraySolution {
@@ -249,20 +250,29 @@ class ArraySolution {
     //Given a non-negative integer numRows, generate the first numRows of Pascal's triangle.
     public List<List<Integer>> generate(int numRows) {
         List<List<Integer>> pascalTriangle = new ArrayList<>(numRows);
-        /* Every element of Pascal's Triangle can be calculated with binomial coefficient C(n,k),
-            where n is the row number and k is row's element number and counting starts from 0.
-        */
-        int elementValue;
+
         for (int row = 0; row < numRows; row++) {
-            List<Integer> newRow = new ArrayList<>();
-            for (int rowElement = 0; rowElement <= row; rowElement++) {
-                elementValue = binomialCoeff(row, rowElement);
-                newRow.add(elementValue);
-            }
-            pascalTriangle.add(newRow);
+            pascalTriangle.add(getRow(row));
         }
 
         return pascalTriangle;
+    }
+
+    /* Given a non-negative index k where k ≤ 33, return the kth index row of the Pascal's triangle.
+    Note that the row index starts from 0. */
+    public List<Integer> getRow(int rowIndex) {
+        List<Integer> row = new ArrayList<>(Arrays.asList(new Integer[rowIndex + 1]));
+        int elementValue;
+
+        /* Every element of Pascal's Triangle can be calculated with binomial coefficient C(n,k),
+        where n is the row number and k is row's element number and counting starts from 0. */
+        for (int rowElement = 0; rowElement <= rowIndex/2; rowElement++) {
+            elementValue = binomialCoeff(rowIndex, rowElement);
+            row.set(rowElement, elementValue);
+            row.set(rowIndex - rowElement, elementValue);
+        }
+
+        return row;
     }
 
     //Thanks google

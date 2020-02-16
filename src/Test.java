@@ -23,6 +23,9 @@ public class Test {
         int[] changeMe = {0, 4, -13, 100, 8, 9, 4};
         int remove = 4;
         int[] binary = {1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1};
+        int[] rotateMe = {1, -50, 34, 23, 0, 10};
+        int step = 3;
+        int row = 30;
 
         int pivot = new ArraySolution().pivotIndex(nums);
         System.out.println("The pivot index for " + Arrays.toString(nums) + " is " + pivot);
@@ -84,5 +87,12 @@ public class Test {
         int minSubarrLength = new TwoPointerSolution().minSubArrayLen(target, digits);
         System.out.println("\nFor array " + Arrays.toString(digits) +
                 "\nThe minimal length of a contiguous sub-array of which the sum ≥ " + target + " is " + minSubarrLength);
+
+        System.out.println("\nBefore rotate: " + Arrays.toString(rotateMe));
+        test.rotate(rotateMe, step);
+        System.out.println("After rotate: " + Arrays.toString(rotateMe));
+
+        List<Integer> pascalTriangleNRow = new ArraySolution().getRow(row);
+        System.out.println("\nPascal's Triangle " + row + "nth row is:\n" + pascalTriangleNRow);
     }
 }

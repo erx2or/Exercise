@@ -125,4 +125,25 @@ public class TwoPointerSolution {
 
         return minLength;
     }
+
+    /* Given an array, rotate the array to the right by k steps, where k is non-negative. */
+    public void rotate(int[] nums, int k) {
+        int index;
+
+        while (k > 0) {
+            index = nums.length - 1;
+            while (index > 0) {
+                swap(nums, index, index - 1);
+                index--;
+            }
+            k--;
+        }
+
+    }
+
+    public void swap(int[] s, int i, int j) {
+        int temp = s[i];
+        s[i] = s[j];
+        s[j] = temp;
+    }
 }
