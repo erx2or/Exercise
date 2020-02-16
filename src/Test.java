@@ -3,14 +3,14 @@ import java.util.List;
 
 public class Test {
     public static void main (String[] args){
-        //Input for Array and 2D Array solutions
+        //Input for Array and 2D Array solutions and TwoPointer solution
         int[] nums = {0, 2, 0, 1, 0};
         int[] digits = {7,2,8,5,0,9,1,2,9,5,3,6,6,7,3,2,8,4,3,7,9,5,7,7,4,7,4,9,4,7,0,1,1,1,7,4,0,0,6};
         int[] digits1 = {9, 9, 9};
         int[][] matrix = { {1, 2, 3, 4, 5}, {6, 7, 8, 9, 10}, {11, 12, 13, 14, 15}, {16, 17, 18, 19, 20}, {21, 22, 23, 24, 25}};
         int pascalTriangleRows = 10;
 
-        //Input for String solutions
+        //Input for String solutions and TwoPointer solutions
         String firstBinaryNumber = "101000001001001101100100000101011110110110";
         String secondBinaryNumber = "1101010010111011100011111001100010101000";
         String haystack = "hello";
@@ -19,7 +19,10 @@ public class Test {
         char[] reverseMe = {'g', 'a', 'r', 'd', 'e', 'n', 'i', 'a'};
         int[] moreNums = {7, 3, 1, 0, 0, -6};
         int[] ascArray = {2, 7, 11, 15};
-        int target = 13;
+        int target = 26;
+        int[] changeMe = {0, 4, -13, 100, 8, 9, 4};
+        int remove = 4;
+        int[] binary = {1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1};
 
         int pivot = new ArraySolution().pivotIndex(nums);
         System.out.println("The pivot index for " + Arrays.toString(nums) + " is " + pivot);
@@ -65,6 +68,21 @@ public class Test {
         System.out.println("The largest sum of min pairs is " + maxSumOfMinPairs);
 
         int[] positions = new TwoPointerSolution().twoSum(ascArray, target);
-        System.out.println("\nFor array " + Arrays.toString(ascArray) + "\nValues at positions: " + Arrays.toString(positions) + " sum up to " + target);
+        System.out.println("\nFor array " + Arrays.toString(ascArray) +
+                "\nValues at positions: " + Arrays.toString(positions) + " sum up to " + target);
+
+        System.out.println("\nRemove " + remove + " from array " + Arrays.toString(changeMe));
+        int timesRemoved = new TwoPointerSolution().removeElement(changeMe, remove);
+        int[] changedArr = Arrays.copyOfRange(changeMe, 0, timesRemoved);
+        System.out.println("New array length: " + timesRemoved +
+                "\nAnd its sub-array is " + Arrays.toString(changedArr));
+
+        int maxConsecutiveOnes = new TwoPointerSolution().findMaxConsecutiveOnes(binary);
+        System.out.println("\nFor array " + Arrays.toString(binary) +
+                "\nThe maximum number of consecutive ones is: " + maxConsecutiveOnes);
+
+        int minSubarrLength = new TwoPointerSolution().minSubArrayLen(target, digits);
+        System.out.println("\nFor array " + Arrays.toString(digits) +
+                "\nThe minimal length of a contiguous sub-array of which the sum ≥ " + target + " is " + minSubarrLength);
     }
 }

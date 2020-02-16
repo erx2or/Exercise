@@ -68,4 +68,61 @@ public class TwoPointerSolution {
 
         return new int[] {};
     }
+
+    /* Given an array nums and a value val, remove all instances of that value in-place and return the new length.
+    Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.
+    The order of elements can be changed. It doesn't matter what you leave beyond the new length.*/
+    public int removeElement(int[] nums, int val) {
+        int k = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != val) {
+                nums[k] = nums[i];
+                k++;
+            }
+        }
+        return k;
+    }
+
+    /* Given a binary array, find the maximum number of consecutive 1s in this array.
+    The input array will only contain 0 and 1.
+    The length of input array is a positive integer and will not exceed 10,000. */
+    public int findMaxConsecutiveOnes(int[] nums) {
+        int count = 0;
+        int max = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+            while (nums[i] == 1) {
+                count++;
+                if (i < nums.length - 1)
+                    i++;
+                else
+                    break;
+            }
+            max = Math.max(count, max);
+            count = 0;
+        }
+
+        return max;
+    }
+
+    /* Given an array of n positive integers and a positive integer s, find the minimal length of a contiguous subarray of which the sum ≥ s. If there isn't one, return 0 instead. */
+    public int minSubArrayLen(int s, int[] nums) {
+        int sum, tempLength, j;
+        int minLength = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+            sum = nums[i];
+            tempLength = 1;
+            j = i + 1;
+            while (sum < s && j < nums.length) {
+                sum += nums[j];
+                tempLength++;
+                j++;
+            }
+            if (sum >= s)
+                minLength = (minLength == 0) ? tempLength : Math.min(tempLength,minLength);
+        }
+
+        return minLength;
+    }
 }
