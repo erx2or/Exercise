@@ -27,4 +27,21 @@ public class HashSetSolution {
         }
         return hashSet.iterator().next();
     }
+
+    /* Given two arrays, write a function to compute their intersection.
+    Each element in the result must be unique.
+    The result can be in any order. */
+    public int[] intersection(int[] nums1, int[] nums2) {
+        Set<Integer> hashSet = new HashSet<>();
+        for (int i : nums1) {
+                for (int j : nums2) {
+                    if (i == j) {
+                        hashSet.add(i);
+                        break;
+                    }
+                }
+        }
+        return hashSet.stream().mapToInt(Number::intValue).toArray();
+    }
+
 }
