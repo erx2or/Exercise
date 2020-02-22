@@ -25,7 +25,7 @@ public class Test {
         int[] binary = {1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1};
         int[] rotateMe = {1, -50, 34, 23, 0, 10};
         int step = 3;
-        int row = 30;
+        int row = 10;
 
         int pivot = new ArraySolution().pivotIndex(nums);
         System.out.println("The pivot index for " + Arrays.toString(nums) + " is " + pivot);
@@ -94,5 +94,20 @@ public class Test {
 
         List<Integer> pascalTriangleNRow = new ArraySolution().getRow(row);
         System.out.println("\nPascal's Triangle " + row + "nth row is:\n" + pascalTriangleNRow);
+
+        System.out.println();
+        MyHashSet hashSet = new MyHashSet();
+        hashSet.add(1);
+        hashSet.add(0);
+        hashSet.add(2);
+        hashSet.print();
+        System.out.println("Contains 1? " + hashSet.contains(1));    // returns true
+        System.out.println("Contains 3? " + hashSet.contains(3));    // returns false (not found)
+        hashSet.add(2);
+        hashSet.print();
+        System.out.println("Contains 2? " + hashSet.contains(2));    // returns true
+        hashSet.remove(2);
+        hashSet.print();
+        System.out.println("Contains 2? " + hashSet.contains(2));    // returns false (already removed)
     }
 }
