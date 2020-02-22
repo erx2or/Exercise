@@ -109,5 +109,20 @@ public class Test {
         hashSet.remove(2);
         hashSet.print();
         System.out.println("Contains 2? " + hashSet.contains(2));    // returns false (already removed)
+
+        System.out.println();
+        MyHashMap hashMap = new MyHashMap();
+        hashMap.put(1, 1);
+        hashMap.put(2, 2);
+        hashMap.print();
+        System.out.println("Value for key 1: " + hashMap.get(1));            // returns 1
+        System.out.println("Value for key 3: " + hashMap.get(3));            // returns -1 (not found)
+        hashMap.put(2, 1);          // update the existing value
+        hashMap.print();
+        System.out.println("Value for key 2: " + hashMap.get(2));            // returns 1
+        hashMap.remove(2);          // remove the mapping for 2
+        hashMap.print();
+        System.out.println("Value for key 2: " + hashMap.get(2));            // returns -1 (not found)
+
     }
 }
