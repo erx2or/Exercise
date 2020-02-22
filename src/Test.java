@@ -27,6 +27,10 @@ public class Test {
         int step = 3;
         int row = 10;
 
+        //Input for HasSet solutions and HashMap solutions
+        int[] duplicates = {1, 2, 3, 4, 1, 1, 3, 3};
+        int[] noPair = {4, 1, 2, 1, 2};
+
         int pivot = new ArraySolution().pivotIndex(nums);
         System.out.println("The pivot index for " + Arrays.toString(nums) + " is " + pivot);
 
@@ -124,5 +128,7 @@ public class Test {
         hashMap.print();
         System.out.println("Value for key 2: " + hashMap.get(2));            // returns -1 (not found)
 
+        System.out.println("\nArray: " + Arrays.toString(duplicates) + ". Has duplicates? " + new HashSetSolution().containsDuplicate(duplicates));
+        System.out.println("Array: " + Arrays.toString(noPair) + ". Element without pair is: " + new HashSetSolution().singleNumber(noPair));
     }
 }
