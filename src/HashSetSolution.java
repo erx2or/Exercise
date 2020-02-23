@@ -62,9 +62,7 @@ public class HashSetSolution {
                 break;
         }
 
-        if (n == 1)
-            return true;
-        return false;
+        return n == 1;
     }
 
     public int[] toArray(int n) {
