@@ -32,6 +32,7 @@ public class Test {
         int[] noPair = {4, 1, 2, 1, 2};
         int[] nums1 = {4, 9, 5};
         int[] nums2 = {9, 4, 9, 8, 4};
+        int happyNumber = 888;
 
         int pivot = new ArraySolution().pivotIndex(nums);
         System.out.println("The pivot index for " + Arrays.toString(nums) + " is " + pivot);
@@ -136,5 +137,6 @@ public class Test {
                 ". Element without pair is: " + new HashSetSolution().singleNumber(noPair));
         System.out.println("Array: " + Arrays.toString(nums1) + ". And array: " + Arrays.toString(nums2) +
                 ". Intersection is: " + Arrays.toString(new HashSetSolution().intersection(nums1, nums2)));
+        System.out.println("Number " + happyNumber + ". Is happy? " + new HashSetSolution().isHappy(happyNumber));
     }
 }
