@@ -33,6 +33,8 @@ public class Test {
         int[] nums1 = {4, 9, 5};
         int[] nums2 = {9, 4, 9, 8, 4};
         int happyNumber = 888;
+        int[] findSum = {1, 7, 22, 2};
+        int sum = 9;
 
         int pivot = new ArraySolution().pivotIndex(nums);
         System.out.println("The pivot index for " + Arrays.toString(nums) + " is " + pivot);
@@ -138,5 +140,7 @@ public class Test {
         System.out.println("Array: " + Arrays.toString(nums1) + ". And array: " + Arrays.toString(nums2) +
                 ". Intersection is: " + Arrays.toString(new HashSetSolution().intersection(nums1, nums2)));
         System.out.println("Number " + happyNumber + ". Is happy? " + new HashSetSolution().isHappy(happyNumber));
+        System.out.println("\nFor array " + Arrays.toString(findSum) +
+                "\nValues at positions: " + Arrays.toString(new HashMapSolution().twoSum(findSum, sum)) + " sum up to " + sum);
     }
 }
