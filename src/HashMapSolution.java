@@ -22,7 +22,7 @@ public class HashMapSolution {
 
     public void printHashMap(Map<Integer, Integer> map) {
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            System.out.print("(" + sentry.getKey() + "," + entry.getValue() + ") ");
+            System.out.print("(" + entry.getKey() + "," + entry.getValue() + ") ");
         }
     }
 }
